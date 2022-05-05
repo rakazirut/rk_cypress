@@ -10,7 +10,8 @@
     "localRun": "yarn cypress run"
   },
   "dependencies": {
-    "cypress": "^9.5.3"
+    "cypress": "^9.5.3",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@testmo/testmo-cli": "^1.0.12",

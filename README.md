@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/rakazirut/rk_cypress.svg?style=shield&circle-token=ef935c1a1652cae540c3cf43c68318e2351c7cec)](https://circleci.com/gh/rakazirut/rk_cypress/tree/main)
 
-Simple project for cypress demo. CircleCI workflows trigger on build and on schedule. ~~Test results are written to riis testmo account~~.
+Simple project for cypress demo. CircleCI workflows trigger on build and on schedule.
 
 Running using docker-compose
 1. Install [docker]('https://docs.docker.com/get-docker/') and [docker-compose]('https://docs.docker.com/compose/install/')
