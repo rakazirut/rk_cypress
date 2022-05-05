@@ -24,8 +24,6 @@ workflows:
   commit-workflow:
     jobs:
       - cypress/run:
-          context:
-            - testmo
           executor: cypress/base-14
           yarn: true
           post-steps:
@@ -40,8 +38,6 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          context:
-            - testmo
           executor: cypress/base-14
           yarn: true
           post-steps:
