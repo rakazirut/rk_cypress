@@ -1,0 +1,9 @@
+# node.js and npm
+node_modules
+*.log
+*.env
+*.local.sh
+
+cypress/reports
+cypress/videos
+cypress/screenshots

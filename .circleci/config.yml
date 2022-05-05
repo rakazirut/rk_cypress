@@ -1,0 +1,48 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+commands:
+  report-test:
+    description: |
+      Post result to testmo
+    steps:
+      - run: 
+          name: 'Post result to Testmo'
+          command: TESTMO_TOKEN=$TESTMO_TOKEN yarn testmo automation:run:submit --instance $TESTMO_URL --project-id 4 --name "Cypress test run $CIRCLE_BUILD_NUM" --source "cypress-tests" --results ./cypress/reports/junit/*.xml
+
+  save-artifact:
+    description: |
+      Save test artifact to circle
+    steps:
+      - store_artifacts:
+          path: ./cypress/reports/index.html
+
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - cypress/run:
+          context:
+            - testmo
+          executor: cypress/base-14
+          yarn: true
+          post-steps:
+            - save-artifact
+  schedule-workflow:
+    triggers:
+      - schedule:
+          cron: "0 23 * * 1-5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - cypress/run:
+          context:
+            - testmo
+          executor: cypress/base-14
+          yarn: true
+          post-steps:
+            - save-artifact
