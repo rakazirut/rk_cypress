@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "cypress demo by Robert Kazirut",
   "main": "index.js",
-  "author": "Rob Kazirut <rkazirut@riis.com>",
+  "author": "Rob Kazirut <robert.kazirut@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dockerRun": "docker-compose up cypress",
-    "localRun": "yarn cypress run"
+    "localRun": "npx cypress run",
+    "localOpen": "npx cypress open"
   },
   "dependencies": {
     "cypress": "^9.5.3",
