@@ -1,6 +1,6 @@
 # rk_cypress demo
 
-[![CircleCI](https://circleci.com/gh/rakazirut/rk_cypress.svg?style=shield&circle-token=ef935c1a1652cae540c3cf43c68318e2351c7cec)](https://circleci.com/gh/rakazirut/rk_cypress/tree/main)
+[![CircleCI](https://circleci.com/gh/rakazirut/rk_cypress.svg?style=svg&circle-token=ef935c1a1652cae540c3cf43c68318e2351c7cec)](https://circleci.com/gh/rakazirut/rk_cypress/tree/main)
 
 Simple project for cypress demo. CircleCI workflows trigger on build and on schedule.
 
