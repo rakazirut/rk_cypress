@@ -13,15 +13,29 @@ const product_elements = {
             close_btn: '.bm-cross-button'
         },
         app_logo: '.app_logo',
-        shopping_cart: '.shopping_cart_link',
-        sort_dropdown: '.product_sort_container',
+        shopping_cart: {
+            icon: '.shopping_cart_link',
+            title: '.title',
+            continue_btn: '[data-test=continue-shopping]',
+            checkout_btn: '[data-test=checkout]'
+        },
+        sort_dropdown: {
+            container: '.product_sort_container',
+            options: [
+                'az',
+                'za',
+                'lohi',
+                'hilo'
+            ] 
+        },
         nav_mascot: '.peek'
     },
     inventory: {
-        add_cart_btn: 'button',
+        add_cart_btn: '.btn_inventory',
         inventory_container: '.inventory_container',
         inventory_list: '.inventory_list',
-        inventory_item: '.inventory_item'
+        inventory_item: '.inventory_item',
+        inventory_item_name: '.inventory_item_name',
     },
     footer: {
         social: {

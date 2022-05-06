@@ -15,8 +15,8 @@ context('Sauce Demo', () => {
                 product_elements.top_nav.app_logo,
                 product_elements.top_nav.hamburger_menu.main_menu_button,
                 product_elements.top_nav.nav_mascot,
-                product_elements.top_nav.shopping_cart,
-                product_elements.top_nav.sort_dropdown
+                product_elements.top_nav.shopping_cart.icon,
+                product_elements.top_nav.sort_dropdown.container
             )
         })
 
@@ -58,5 +58,61 @@ context('Sauce Demo', () => {
             cy.url()
                 .should('not.contain', 'inventory')
         })
-    });
+
+        it('Verify shopping cart', () => {
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .click()
+            cy.checkIfVisible(
+                product_elements.top_nav.shopping_cart.title,
+                product_elements.top_nav.shopping_cart.checkout_btn,
+                product_elements.top_nav.shopping_cart.continue_btn
+            )
+            cy.get(product_elements.top_nav.shopping_cart.title)
+                .contains('Your Cart')
+        })
+
+        it('Verify sort dropdown options', () => {
+            cy.get(product_elements.top_nav.sort_dropdown.container)
+                .find('option')
+                .then(options => {
+                    const actual = [...options].map(o => o.value)
+                    expect(actual).to.deep.eq(product_elements.top_nav.sort_dropdown.options)
+                })
+        })
+
+        it('Verify sort dropdown functionality', () => {
+            let origOrder = []
+            cy.get(product_elements.inventory.inventory_item_name).each(ele => {
+                cy.wrap(ele).invoke('text').then(e => {
+                    origOrder.push(e)
+                })
+            })
+            const options = product_elements.top_nav.sort_dropdown.options
+            options.shift()
+            options.forEach(option => {
+                cy.get(product_elements.top_nav.sort_dropdown.container)
+                    .select(option)
+                let newOrder = []
+                cy.get(product_elements.inventory.inventory_item_name).each(ele => {
+                    cy.wrap(ele).invoke('text').then(e => {
+                        newOrder.push(e)
+                    })
+                }).then(() => {
+                    expect(origOrder).to.not.deep.eq(newOrder)
+                })
+            })
+        })
+
+        it('Verify add item to the cart', () => {
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .click()
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .contains('Remove')
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .children()
+                .contains(1)
+        })
+    })
 });
