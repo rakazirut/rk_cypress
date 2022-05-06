@@ -4,7 +4,7 @@ import {
     login_verbiage
 } from '../../support/constants/login'
 
-context('Sauce Demo Scenarios', () => {
+context('Sauce Demo', () => {
     describe('Login Page Scenarios', () => {
         beforeEach(() => {
             cy.visit('/');
