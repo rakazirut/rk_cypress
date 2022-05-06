@@ -1,7 +1,7 @@
 {
   "name": "rk",
   "version": "1.0.0",
-  "description": "cypress for robertkazirut.com",
+  "description": "cypress demo by Robert Kazirut",
   "main": "index.js",
   "author": "Rob Kazirut <rkazirut@riis.com>",
   "license": "MIT",

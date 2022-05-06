@@ -1,5 +1,6 @@
 {
-    "baseUrl": "https://robertkazirut.com",
+    "baseUrl": "https://www.saucedemo.com/",
+    "chromeWebSecurity": false,
     "viewportHeight": 900,
     "viewportWidth": 1600,
     "reporter": "cypress-multi-reporters",
