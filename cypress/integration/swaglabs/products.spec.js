@@ -59,7 +59,7 @@ context('Sauce Demo', () => {
                 .should('not.contain', 'inventory')
         })
 
-        it('Verify shopping cart', () => {
+        it('Verify empty shopping cart', () => {
             cy.get(product_elements.top_nav.shopping_cart.icon)
                 .click()
             cy.checkIfVisible(
@@ -113,6 +113,56 @@ context('Sauce Demo', () => {
             cy.get(product_elements.top_nav.shopping_cart.icon)
                 .children()
                 .contains(1)
+        })
+
+        it('Verify non-empty shopping cart', () => {
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .click()
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .contains('Remove')
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .children()
+                .contains(1)
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .click()
+            cy.checkIfVisible(
+                product_elements.top_nav.shopping_cart.cart_item,
+                product_elements.top_nav.shopping_cart.cart_item_label,
+                product_elements.top_nav.shopping_cart.cart_quantity,
+                product_elements.top_nav.shopping_cart.cart_remove_btn,
+            )
+        })
+
+        it('Verify remove item from shopping cart', () => {
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .click()
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .contains('Remove')
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .children()
+                .contains(1)
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .click()
+            cy.get(product_elements.top_nav.shopping_cart.cart_remove_btn)
+                .click()
+            cy.checkNotExist(
+                product_elements.top_nav.shopping_cart.cart_item,
+                product_elements.top_nav.shopping_cart.cart_item_label,
+                product_elements.top_nav.shopping_cart.cart_quantity,
+                product_elements.top_nav.shopping_cart.cart_remove_btn,
+            )
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .children()
+                .should('not.exist')
+            cy.get(product_elements.top_nav.shopping_cart.continue_btn)
+                .click()
+            cy.get(product_elements.inventory.add_cart_btn)
+                .first()
+                .contains('Add to cart')
         })
     })
 });

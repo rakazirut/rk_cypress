@@ -5,6 +5,11 @@ Cypress.Commands.add('checkIfVisible', (...elements) => {
         cy.get(ele).should('be.visible'))
 })
 
+Cypress.Commands.add('checkNotExist', (...elements) => {
+    elements.forEach(ele =>
+        cy.get(ele).should('not.exist'))
+})
+
 Cypress.Commands.add('login', (username, password) => {
     cy.visit('/')
     cy.get(login_elements.user_field)

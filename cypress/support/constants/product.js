@@ -17,7 +17,11 @@ const product_elements = {
             icon: '.shopping_cart_link',
             title: '.title',
             continue_btn: '[data-test=continue-shopping]',
-            checkout_btn: '[data-test=checkout]'
+            checkout_btn: '[data-test=checkout]',
+            cart_item: '.cart_item',
+            cart_quantity: '.cart_quantity',
+            cart_item_label: '.cart_item_label',
+            cart_remove_btn: '.cart_button'
         },
         sort_dropdown: {
             container: '.product_sort_container',
