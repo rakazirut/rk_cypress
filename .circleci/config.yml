@@ -17,14 +17,14 @@ commands:
       Save test artifact to circle
     steps:
       - store_artifacts:
-          path: ./cypress/reports/index.htm
+          path: ./cypress/reports/index.html
 
 workflows:
   version: 2
   commit-workflow:
     jobs:
       - cypress/run:
-          executor: cypress/base-14
+          executor: cypres/base-14
           yarn: true
           post-steps:
             - save-artifact
