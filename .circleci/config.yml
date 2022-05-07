@@ -17,7 +17,7 @@ commands:
       Save test artifact to circle
     steps:
       - store_artifacts:
-          path: ./cypress/reports/index.html
+          path: ./cypress/reports/index.htm
 
 workflows:
   version: 2
