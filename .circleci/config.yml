@@ -24,7 +24,7 @@ workflows:
   commit-workflow:
     jobs:
       - cypress/run:
-          executor: cypres/base-14
+          executor: cypress/base-14
           yarn: true
           post-steps:
             - save-artifact
