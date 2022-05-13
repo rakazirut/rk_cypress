@@ -26,8 +26,8 @@ workflows:
       - cypress/run:
           executor: cypress/base-14
           yarn: true
-          post-steps:
-            - save-artifact
+          # post-steps:
+          #   - save-artifact
   schedule-workflow:
     triggers:
       - schedule:
@@ -40,5 +40,5 @@ workflows:
       - cypress/run:
           executor: cypress/base-14
           yarn: true
-          post-steps:
-            - save-artifact
+          # post-steps:
+          #   - save-artifact
