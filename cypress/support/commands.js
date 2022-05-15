@@ -1,4 +1,6 @@
-import { login_elements } from './constants/login'
+import {
+    login_elements
+} from './constants/login'
 
 Cypress.Commands.add('checkIfVisible', (...elements) => {
     elements.forEach(ele =>

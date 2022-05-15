@@ -7,7 +7,7 @@ import product_elements from '../../support/constants/product'
 context('Sauce Demo', () => {
     describe('Product Page Scenarios', () => {
         beforeEach(() => {
-            cy.login(login_verbiage.usernames.standard, login_verbiage.password);
+            cy.login(login_verbiage.usernames.standard, login_verbiage.password)
         });
 
         it('Verify top navigation elements are present', () => {

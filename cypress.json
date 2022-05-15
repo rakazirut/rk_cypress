@@ -1,6 +1,7 @@
 {
     "baseUrl": "https://www.saucedemo.com/",
     "chromeWebSecurity": false,
+    "experimentalSessionAndOrigin": true,
     "viewportHeight": 900,
     "viewportWidth": 1600,
     "reporter": "cypress-multi-reporters",
