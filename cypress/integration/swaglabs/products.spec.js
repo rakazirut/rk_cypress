@@ -116,9 +116,7 @@ context('Sauce Demo', () => {
         })
 
         it('Verify non-empty shopping cart', () => {
-            cy.get(product_elements.inventory.add_cart_btn)
-                .first()
-                .click()
+            cy.setUpCart(true, '4')
             cy.get(product_elements.inventory.add_cart_btn)
                 .first()
                 .contains('Remove')
@@ -136,9 +134,7 @@ context('Sauce Demo', () => {
         })
 
         it('Verify remove item from shopping cart', () => {
-            cy.get(product_elements.inventory.add_cart_btn)
-                .first()
-                .click()
+            cy.setUpCart(true, '4')
             cy.get(product_elements.inventory.add_cart_btn)
                 .first()
                 .contains('Remove')
@@ -163,6 +159,34 @@ context('Sauce Demo', () => {
             cy.get(product_elements.inventory.add_cart_btn)
                 .first()
                 .contains('Add to cart')
+        })
+
+        it('Verify proceed to checkout page', () => {
+            cy.setUpCart(true, '1,2,3')
+            cy.get(product_elements.top_nav.shopping_cart.icon)
+                .click()
+            cy.get(product_elements.top_nav.shopping_cart.checkout_btn)
+                .click()
+            cy.url().should('contain', 'checkout-step-one.html')
+        })
+
+        it('Verify footer elements', () => {
+            cy.checkIfVisible(
+                product_elements.footer.footer_mascot,
+                product_elements.footer.copy,
+                product_elements.footer.social.social_fb,
+                product_elements.footer.social.social_linkd,
+                product_elements.footer.social.social_twit
+            )
+            cy.get(product_elements.footer.social.social_fb)
+                .children()
+                .should('have.attr', 'href', 'https://www.facebook.com/saucelabs')
+            cy.get(product_elements.footer.social.social_twit)
+                .children()
+                .should('have.attr', 'href', 'https://twitter.com/saucelabs')
+            cy.get(product_elements.footer.social.social_linkd)
+                .children()
+                .should('have.attr', 'href', 'https://www.linkedin.com/company/sauce-labs/')
         })
     })
 });

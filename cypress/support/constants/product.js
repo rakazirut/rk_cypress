@@ -35,6 +35,7 @@ const product_elements = {
         }
     },
     footer: {
+        copy: '.footer_copy',
         footer_mascot: '.footer_robot',
         social: {
             social_container: '.social',

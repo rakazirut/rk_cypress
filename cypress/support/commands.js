@@ -23,3 +23,11 @@ Cypress.Commands.add('login', (username, password) => {
     cy.url()
         .should('contain', 'inventory');
 })
+
+Cypress.Commands.add('setUpCart', (reload = true, contents = '4,1,2') => {
+    var b = contents.split(',').map(Number);
+    localStorage.setItem('cart-contents', `[${b}]`)
+    if (reload) {
+        cy.reload()
+    }
+})
